@@ -1,17 +1,18 @@
-const  express  =  require ( ' express ' );
-const  aplicación  = express ();  
+  const express = require('express');
+const app = express();
 
-const  mockUserData = [
-	{nombre : ' Mark ' },
-	{nombre : ' Jill ' }
+const mockUserData=[
+	{name:'Mark'},
+	{name:'Jill'}
 ]
 
-aplicación . get ( ' / users ' , function ( req , res ) {
-	 res . json ({
-		éxito :  verdadero ,
-		mensaje :  ' consiguió usuarios con éxito. ¡Agradable! ' ,
-		usuarios : mockUserData
+app.get('/users/:id',function(req,res){
+	console.log(req.params.id)
+	res.json({
+		success: true,
+		message: 'got one user',
+		user: req.params.id
 	})
 })
 
-aplicación . listen ( 8000 , function () { console . log ( 'el servidor está escuchando ' )})
+app.listen(8000,function(){console.log('server is listening')})
